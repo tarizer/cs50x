@@ -1,0 +1,11 @@
+sort1 uses: Bubble sort
+
+How do you know?: Execution time is long (200ms) for random and reversed files (10k) -> omega(n²). It is short for the sorted file (10k) -> omega(n)
+
+sort2 uses: Merge sort
+
+How do you know?: Execution time is short (4ms) and consistent across all 3 tested files (10k)
+
+sort3 uses: Selection sort
+
+How do you know?: Execution time is long (100ms) and consistent across all 3 tested files (10k)
