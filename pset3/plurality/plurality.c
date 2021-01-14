@@ -21,6 +21,7 @@ int candidate_count;
 // Function prototypes
 bool vote(string name);
 void print_winner(void);
+void swap_candidates(int a, int b);
 
 int main(int argc, string argv[])
 {
@@ -87,21 +88,15 @@ void print_winner(void)
 {
   int i;
   int max_votes;
-  candidate buffer;
+  // candidate buffer;
 
   i = 0;
-  // We only need to iterate once as bubble sort put the biggest number at the end of the array in the first pass
+  // We only need to iterate once using bubble sort as we only need to get track of the biggest number of votes
   while (i < candidate_count - 1)
   {
     if (candidates[i].votes > candidates[i + 1].votes)
     {
-      buffer.name = candidates[i + 1].name;
-      candidates[i + 1].name = candidates[i].name;
-      candidates[i].name = buffer.name;
-
-      buffer.votes = candidates[i + 1].votes;
-      candidates[i + 1].votes = candidates[i].votes;
-      candidates[i].votes = buffer.votes;
+      swap_candidates(i, i + 1);
     }
     max_votes = candidates[i + 1].votes;
     i++;
@@ -116,4 +111,17 @@ void print_winner(void)
     }
     i++;
   }
+}
+
+void swap_candidates(int a, int b)
+{
+  candidate buffer;
+
+  buffer.name = candidates[b].name;
+  candidates[b].name = candidates[a].name;
+  candidates[a].name = buffer.name;
+
+  buffer.votes = candidates[b].votes;
+  candidates[b].votes = candidates[a].votes;
+  candidates[a].votes = buffer.votes;
 }
